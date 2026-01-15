@@ -38,6 +38,7 @@ $computer = isset($_GET['computer']) ? $_GET['computer'] : '未知';
 $ip = isset($_GET['ip']) ? $_GET['ip'] : '未知';
 $time = isset($_GET['time']) ? $_GET['time'] : date('Y-m-d H:i:s');
 $key = isset($_GET['key']) ? $_GET['key'] : '';
+$desc = isset($_GET['desc']) ? $_GET['desc'] : '';
 $lastShutdown = isset($_GET['last_shutdown']) ? $_GET['last_shutdown'] : '';
 
 // 验证密钥
@@ -52,6 +53,9 @@ $eventDesc = isset($eventTypes[$event]) ? $eventTypes[$event] : "❓ 未知事�
 
 // 构建消息 (Telegram 用 HTML)
 $message_tg = "<b>{$eventDesc}</b>\n\n";
+if (!empty($desc)) {
+    $message_tg .= "📝 <b>描述:</b> {$desc}\n";
+}
 $message_tg .= "🖥️ <b>计算机:</b> {$computer}\n";
 $message_tg .= "🕐 <b>时间:</b> {$time}\n";
 $message_tg .= "🌐 <b>IP地址:</b> {$ip}";
@@ -62,7 +66,11 @@ if ($event === 'startup' && !empty($lastShutdown)) {
 
 // 构建消息 (Bark 用纯文本)
 $title_bark = str_replace(['🟢 ', '👤 ', '🔴 ', '⚠️ ', '🔧 '], '', $eventDesc); // 去掉图标作为标题
-$body_bark = "计算机: {$computer}\n时间: {$time}\nIP: {$ip}";
+$body_bark = "";
+if (!empty($desc)) {
+    $body_bark .= "描述: {$desc}\n";
+}
+$body_bark .= "计算机: {$computer}\n时间: {$time}\nIP: {$ip}";
 if ($event === 'startup' && !empty($lastShutdown)) {
     $body_bark .= "\n上次关机: {$lastShutdown}";
 }

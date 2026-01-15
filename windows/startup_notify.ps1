@@ -120,7 +120,7 @@ if ($EventType -eq "startup") {
 }
 
 # Build request URL
-$requestUrl = "{0}?event={1}&computer={2}&ip={3}&time={4}&key={5}" -f $NOTIFY_URL, (UrlEncode $EventType), (UrlEncode $computerName), (UrlEncode $ipAddress), (UrlEncode $currentTime), (UrlEncode $SECRET_KEY)
+$requestUrl = "{0}?event={1}&computer={2}&ip={3}&time={4}&key={5}&desc={6}" -f $NOTIFY_URL, (UrlEncode $EventType), (UrlEncode $computerName), (UrlEncode $ipAddress), (UrlEncode $currentTime), (UrlEncode $SECRET_KEY), (UrlEncode $MACHINE_DESCRIPTION)
 
 # Add last shutdown time if available
 if ($lastShutdown) {

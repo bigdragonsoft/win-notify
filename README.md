@@ -61,6 +61,7 @@ win-notify/
    ```powershell
    $NOTIFY_URL = "http://你的域名/notify.php"
    $SECRET_KEY = "你的密钥"
+   $MACHINE_DESCRIPTION = "我的办公室电脑" # 可选：用于区分多台机器
    ```
 3. **以管理员身份**运行 `setup_tasks.ps1`
 

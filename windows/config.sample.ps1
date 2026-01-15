@@ -8,3 +8,6 @@ $NOTIFY_URL = "http://your-domain.com/notify.php"
 
 # 访问密钥（与 VPS config.php 中的 SECRET_KEY 保持一致）
 $SECRET_KEY = "your_strong_secret_key_here"
+
+# 机器描述 (显示在通知中，用于区分不同电脑)
+$MACHINE_DESCRIPTION = "My Office Computer"
