@@ -1,0 +1,8 @@
+# User configuration files (contain secrets)
+vps/config.php
+windows/config.ps1
+
+# System generated files
+windows/last_event.json
+windows/boot_time.txt
+C:/ProgramData/StartupNotify/
